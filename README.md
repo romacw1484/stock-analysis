@@ -1,7 +1,7 @@
-This is a huge collection of stock-python-math files which all serve various purposes. Maybe these will all be combined one day to make a cool application !
+**This is a huge collection of stock-python-math files which all serve various purposes. Maybe these will all be combined one day to make a cool application !**
 
 
-- LetsSee.py
+**- LetsSee.py**
 The current project, a python program which allows users to perform a menu of functions, each with their own info or graph.
 
 <img width="556" alt="Screenshot 2025-01-18 at 1 47 50 PM" src="https://github.com/user-attachments/assets/aaad0df1-cadc-469d-bb35-a843722ea4ad" />
@@ -10,5 +10,14 @@ The current project, a python program which allows users to perform a menu of fu
 
 
 
-- OLS Regression 
+
+
+
+
+
+
+
+
+
+- **OLS Regression **
 Some sort of regression pattern 
