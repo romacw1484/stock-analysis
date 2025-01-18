@@ -8,6 +8,7 @@ The current project, a python program which allows users to perform a menu of fu
 
 <img width="1447" alt="Screenshot 2025-01-18 at 1 47 16 PM" src="https://github.com/user-attachments/assets/7cbe54db-2a4a-4926-96b3-229b1443f6a5" />
 
+<img width="1454" alt="Screenshot 2025-01-18 at 1 50 42 PM" src="https://github.com/user-attachments/assets/8ad51ad4-49fc-4674-8329-1e3b084373f1" />
 
 
 
