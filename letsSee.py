@@ -373,84 +373,83 @@ def moving_average_crossover_strategy(data, symbol):
 
 
 
-# Updated Main Program
 def main():
-    print(f"Hello, welcome to Willy's WallStreet !!! ")
+    while True:
+        print(f"\nHello, welcome to Willy's WallStreet !!!\n")
 
-    print(f'''\nWhat would you like to do: 
-    A - Show me the price chart of a stock 
-    B - Show me the price comparison two stocks
-    C - Show me trading strategies given a stock 
-    D - Show me the cash flow statement of my chosen stock
-    E - Show me the analyst recommendations for the stock of the last 6 months
-    F - Show me the price prediction for the next 30 days
-    Q - Quit the program
-    ''')
-    # Get user choice
-    choice = input('Please enter your choice (e.g. for the first option type "A"): ').strip().upper()
+        print(f'''What would you like to do:
+        A - Show me the price chart of a stock
+        B - Show me the price comparison between two stocks
+        C - Show me trading strategies for a stock
+        D - Show me the cash flow statement of a stock
+        E - Show me the analyst recommendations for a stock over the last 6 months
+        F - Show me the price prediction for the next 30 days
+        Q - Quit the program
+        ''')
 
-    # Quit option
-    if choice == "Q":
-        print("Thank you for using Willy's WallStreet! Goodbye.")
-        return
+        # Get user choice
+        choice = input('Please enter your choice (e.g. for the first option type "A"): ').strip().upper()
 
-    
-    # Define a date range for stock data
-    end_date = date.today()
-    start_date = end_date - relativedelta(years=2)
+        # Quit the program if user chooses 'Q'
+        if choice == "Q":
+            print("\nThank you for using Willy's WallStreet! Goodbye.")
+            break
 
+        # Handle user choice
+        if choice == "A":
+            symbol = input("\nEnter the stock symbol: ").upper().strip()
+            end_date = date.today()
+            start_date = end_date - relativedelta(years=1)
+            stock_data = download_stock_data(symbol, start_date, end_date)
 
-    # Execute the corresponding function based on the user's choice
-    if choice == "A":
+            if stock_data.empty:
+                print(f"No data found for {symbol}. Please try again.")
+            else:
+                visualize_stock_data(stock_data, symbol, start_date, end_date)
 
-         # Get the stock symbol for the "A" option
-        symbol = input("Please enter the stock symbol: ").upper().strip()
+        elif choice == "B":
+            symbol1 = input("\nEnter the first stock symbol: ").upper().strip()
+            symbol2 = input("Enter the second stock symbol: ").upper().strip()
+            end_date = date.today()
+            start_date = end_date - relativedelta(years=1)
 
-        # Download stock data
-        stock_data = download_stock_data(symbol, start_date, end_date)
+            stock_data1 = download_stock_data(symbol1, start_date, end_date)
+            stock_data2 = download_stock_data(symbol2, start_date, end_date)
 
-        if stock_data.empty:
-            print(f"No data found for {symbol} from {start_date} to {end_date}. Please try again.")
-            return
+            if stock_data1.empty or stock_data2.empty:
+                print(f"Data not found for one or both symbols ({symbol1}, {symbol2}). Please try again.")
+            else:
+                compare_stock_prices(stock_data1, stock_data2, symbol1, symbol2)
 
-        # Visualize stock data
-        visualize_stock_data(stock_data, symbol, start_date, end_date)
+        elif choice == "C":
+            symbol = input("\nEnter the stock symbol: ").upper().strip()
+            end_date = date.today()
+            start_date = end_date - relativedelta(years=1)
+            stock_data = download_stock_data(symbol, start_date, end_date)
 
+            if stock_data.empty:
+                print(f"No data found for {symbol}. Please try again.")
+            else:
+                moving_average_crossover_strategy(stock_data, symbol)
 
-   
-    elif choice == "B":
-        symbol1 = input("Please enter the first stock symbol: ").upper().strip()
-        symbol2 = input("Please enter the second stock symbol: ").upper().strip()
-        compare_stock_prices(symbol1, symbol2, start_date, end_date)
+        else:
+            print("\nInvalid choice. Please try again.")
 
-    elif choice == "C":
-        symbol = input("Please enter the stock symbol: ").upper().strip()
-        stock_data = download_stock_data(symbol, start_date, end_date)
-
-        if stock_data.empty:
-            print(f"No data found for {symbol} from {start_date} to {end_date}. Please try again.")
-            return
-
-        moving_average_crossover_strategy(stock_data, symbol)
-
-
-        
-    '''
-        
-    elif choice == "C":
-        show_revenue_and_earnings(symbol)  # Placeholder function for revenue and earnings
-    elif choice == "D":
-        show_cash_flow_statement(symbol)  # Placeholder function for cash flow statement
-    elif choice == "E":
-        show_analyst_recommendations(symbol)  # Placeholder function for analyst recommendations
-    elif choice == "F":
-        predict_stock_prices(stock_data, symbol)  # Placeholder function for price prediction
-    else:
-        print("Invalid choice. Please try again.")
-        return
         '''
+        elif choice == "D":
+            symbol = input("\nEnter the stock symbol: ").upper().strip()
+            show_cash_flow_statement(symbol)  # Placeholder function for cash flow
 
-    print("Thank you for using Willy's WallStreet!")
+        elif choice == "E":
+            symbol = input("\nEnter the stock symbol: ").upper().strip()
+            show_analyst_recommendations(symbol)  # Placeholder function for analyst recommendations
+
+        elif choice == "F":
+            symbol = input("\nEnter the stock symbol: ").upper().strip()
+            predict_stock_prices(symbol)  # Placeholder function for price prediction
+
+        '''
+        
 
 
 if __name__ == "__main__":
